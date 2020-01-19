@@ -23,6 +23,7 @@ import java.util.UUID;
 @DynamicUpdate
 @Getter
 @Setter
+@Builder
 public class CorsEntity {
 
     /**
@@ -31,15 +32,6 @@ public class CorsEntity {
     @Id
     @Column(name = "id", nullable = false, updatable = false)
     private String uuid;
-
-
-    @Column(name = "created_at")
-    @CreationTimestamp
-    private LocalDateTime createdAt;
-
-    @Column(name = "updated_at")
-    @UpdateTimestamp
-    private LocalDateTime updatedAt;
 
     /**
      * Constructor to initialize {@link } with uuid and timestamp
@@ -59,6 +51,14 @@ public class CorsEntity {
 
     @Column(name = "allowed_header", unique = true)
     private String allowedHeader;
+
+    @Column(name = "created_at")
+    @CreationTimestamp
+    private LocalDateTime createdAt;
+
+    @Column(name = "updated_at")
+    @UpdateTimestamp
+    private LocalDateTime updatedAt;
 
 
 }
