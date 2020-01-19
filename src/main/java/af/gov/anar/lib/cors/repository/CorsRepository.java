@@ -1,6 +1,6 @@
-package af.gov.anar.lib.cors.data.repository;
+package af.gov.anar.lib.cors.repository;
 
-import af.gov.anar.lib.cors.data.model.CorsEntity;
+import af.gov.anar.lib.cors.model.CorsEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

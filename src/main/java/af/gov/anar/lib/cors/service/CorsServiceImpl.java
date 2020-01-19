@@ -1,11 +1,12 @@
 package af.gov.anar.lib.cors.service;
 
-import af.gov.anar.lib.cors.data.repository.CorsRepository;
+import af.gov.anar.lib.cors.model.CorsEntity;
+import af.gov.anar.lib.cors.repository.CorsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class CorsServiceImpl implements CorsService {
@@ -16,17 +17,43 @@ public class CorsServiceImpl implements CorsService {
 
     @Override
     public List<String> getAllowedOrigins() {
-        corsRepository.findAll().stream().collect(Collectors.toList());
-        return null;
+        List<String> allowedOrigins = new ArrayList<>();
+        for (CorsEntity corsEntity: corsRepository.findAll() ) {
+            allowedOrigins.add(corsEntity.getAllowedOrigin());
+        }
+        return allowedOrigins;
     }
 
     @Override
     public List<String> getAllowedMethods() {
-        return null;
+        List<String> allowedMethods = new ArrayList<>();
+        for (CorsEntity corsEntity: corsRepository.findAll() ) {
+            allowedMethods.add(corsEntity.getAllowedMethod());
+        }
+        return allowedMethods;
     }
 
     @Override
     public List<String> getAllowedHeaders() {
-        return null;
+        List<String> allowedHeaders = new ArrayList<>();
+        for (CorsEntity corsEntity: corsRepository.findAll() ) {
+            allowedHeaders.add(corsEntity.getAllowedHeader());
+        }
+        return getAllowedHeaders();
+    }
+
+    @Override
+    public List<CorsEntity> findAll() {
+        return corsRepository.findAll();
+    }
+
+    @Override
+    public CorsEntity save(CorsEntity corsEntity) {
+        return corsRepository.save(corsEntity);
+    }
+
+    @Override
+    public void delete(String id) {
+        corsRepository.deleteById(id);
     }
 }
