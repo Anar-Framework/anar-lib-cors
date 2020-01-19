@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -39,7 +40,7 @@ public class CorsServiceImpl implements CorsService {
         for (CorsEntity corsEntity: corsRepository.findAll() ) {
             allowedHeaders.add(corsEntity.getAllowedHeader());
         }
-        return getAllowedHeaders();
+        return Arrays.asList("*");
     }
 
     @Override
@@ -53,7 +54,7 @@ public class CorsServiceImpl implements CorsService {
     }
 
     @Override
-    public void delete(String id) {
+    public void delete(long id) {
         corsRepository.deleteById(id);
     }
 }

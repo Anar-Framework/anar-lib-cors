@@ -10,18 +10,5 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 @ComponentScan(basePackages = "af.*")
-
-public class AuditConfig {
-
-	/**
-	 * Creates a new Modelmapper bean
-	 * 
-	 * @return The {@link ModelMapper}
-	 */
-	@Bean
-	public ModelMapper modelMapper() {
-		return new ModelMapper();
-	}
-
-
+public class CorsConfig {
 }

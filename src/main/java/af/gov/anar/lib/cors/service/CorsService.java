@@ -16,5 +16,5 @@ public interface CorsService {
     List<String> getAllowedHeaders();
     List<CorsEntity> findAll();
     CorsEntity save (CorsEntity corsEntity);
-    void delete(String id);
+    void delete(long id);
 }

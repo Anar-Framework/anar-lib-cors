@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CorsRepository extends JpaRepository<CorsEntity, String> {
+public interface CorsRepository extends JpaRepository<CorsEntity, Long> {
 }
