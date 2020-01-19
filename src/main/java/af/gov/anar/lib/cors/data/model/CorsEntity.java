@@ -19,8 +19,8 @@ import java.util.UUID;
 /**
  * The CorsEntity class with required fields to be captured and recorded
  */
-@Entity(name = "Audit")
-@Table(name = "audit_log")
+@Entity()
+@Table(name = "cors")
 @EqualsAndHashCode
 @AllArgsConstructor
 @DynamicUpdate
@@ -32,11 +32,11 @@ public class CorsEntity {
      * Field for immutable universally unique identifier (UUID)
      */
     @Id
-    @Column(name = "log_id", nullable = false, updatable = false)
+    @Column(name = "id", nullable = false, updatable = false)
     private String uuid;
 
 
-    @Column(name = "log_dtimes")
+    @Column(name = "created_at")
     @CreationTimestamp
     private LocalDateTime createdAt;
 
@@ -50,4 +50,18 @@ public class CorsEntity {
     public CorsEntity() {
         uuid = UUID.randomUUID().toString();
     }
+
+
+    @Column(name = "allowed_origin", unique = true)
+    private String allowedOrigin;
+
+
+    @Column(name = "allowed_method", unique = true)
+    private String allowedMethod;
+
+
+    @Column(name = "allowed_header", unique = true)
+    private String allowedHeader;
+
+
 }
