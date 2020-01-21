@@ -28,12 +28,15 @@ public class CorsInitializer {
     @PostConstruct
     public void init()
     {
-        CorsEntity corsEntity = CorsEntity.builder()
-                .allowedHeader(allowedOrigin)
-                .allowedMethod(allowedMethod)
-                .allowedHeader(allowedHeader)
-                .build();
-        corsService.save(corsEntity);
+        if(corsService.findAll().size() < 1)
+        {
+            CorsEntity corsEntity = CorsEntity.builder()
+                    .allowedHeader(allowedOrigin)
+                    .allowedMethod(allowedMethod)
+                    .allowedHeader(allowedHeader)
+                    .build();
+            corsService.save(corsEntity);
+        }
 
     }
 
